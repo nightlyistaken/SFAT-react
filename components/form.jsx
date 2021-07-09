@@ -65,6 +65,7 @@ class Form extends Component {
           </Button>
         </form>
         <Table data={this.state.confirmedData} />
+        
       </React.Fragment>
     );
   }

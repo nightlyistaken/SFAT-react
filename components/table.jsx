@@ -3,15 +3,8 @@ import UITable from "@geist-ui/react/esm/table";
 import Text from "@geist-ui/react/esm/text";
 import User from "@geist-ui/react/esm/user";
 import Button from "@geist-ui/react/esm/button";
-import useToasts from "@geist-ui/react/esm/use-toasts";
 import Card from "@geist-ui/react/esm/card";
-
-const withToasts = (Component) => {
-  return (props) => {
-    const [_, setToast] = useToasts();
-    return <Component setToast={setToast} {...props} />;
-  };
-};
+import withToasts from "../lib/toast";
 
 class Table extends Component {
   constructor(props) {
@@ -25,7 +18,6 @@ class Table extends Component {
           <UITable.Column prop="firstName"></UITable.Column>
           <UITable.Column prop="lastName"></UITable.Column>
         </UITable>
-        
         <User
           src="https://avatars.githubusercontent.com/u/62501544?v=4"
           name="breadA (dhairy-online)"
@@ -38,13 +30,7 @@ class Table extends Component {
         >
           Co-owner, React and back-end master
         </User>
-        <Button
-          onClick={() => {
-            this.props.setToast({ text: "Hello" });
-          }}
-        >
-          {" "}
-        </Button>
+
         <Card hoverable>
           <p>
             <Text h5>

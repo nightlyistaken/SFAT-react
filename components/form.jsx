@@ -8,9 +8,10 @@ import Tag from "@geist-ui/react/esm/tag";
 import Spacer from "@geist-ui/react/esm/spacer";
 import { Container } from "@geist-ui/react";
 import Input from "@geist-ui/react/esm/input";
-{
-  /** Welp thats a lot of work  */
-}
+import withToasts from "../lib/toast";
+
+/** Welp thats a lot of work  */
+
 class Form extends Component {
   state = {
     firstName: "",
@@ -21,65 +22,73 @@ class Form extends Component {
   };
 
   render() {
-    
     return (
-      
       <React.Fragment>
         <Display>
           <Text h1>
             Name,Class Form in React
             <Tag size="large" type="lite">
-              V.1.1
+              V.1.2
             </Tag>
           </Text>
           <Text h5>SFAT - Simple and Easy form maker. </Text>
         </Display>
 
         <form>
+          <Container>
+            <Input
+              type="text"
+              placeholder="Firstname"
+              value={this.state.firstName}
+              onChange={(e) => this.setState({ firstName: e.target.value })}
+            />
+            <br />
+            <Input
+              type="text"
+              placeholder="Lastname"
+              value={this.state.Lastname}
+              onChange={(e) => this.setState({ lastName: e.target.value })}
+            />
+            <Spacer y={4} />
+            <Button
+              disabled={!this.state.firstName && !this.state.lastName}
+              icon={<Save />}
+              auto
+              onClick={() => {
+                const confirmedData = [
+                  ...this.state.confirmedData,
+                  {
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                  },
+                ];
 
-        <Container>
-          <Input
-            type="text"
-            placeholder="Firstname"
-            value={this.state.firstName}
-            onChange={(e) => this.setState({ firstName: e.target.value })}
-          />
-          <Spacer x={5}/>
-          <Input
-            type="text"
-            placeholder="Lastname"
-            value={this.state.Lastname}
-            onChange={(e) => this.setState({ lastName: e.target.value })}
-          />
-          <Spacer x={5}/>
+                localStorage.setItem(
+                  "confirmedData",
+                  JSON.stringify(confirmedData)
+                );
+
+                this.setState({ confirmedData });
+              }}
+            >
+              Submit
+            </Button>
+          </Container>
+          <Table data={this.state.confirmedData} />
           <Button
-            disabled={!this.state.firstName && !this.state.lastName}
-            icon={<Save />}
+            auto
             onClick={() => {
-              const confirmedData = [
-                ...this.state.confirmedData,
-                {
-                  firstName: this.state.firstName,
-                  lastName: this.state.lastName,
-                },
-              ];
-
-              localStorage.setItem(
-                "confirmedData",
-                JSON.stringify(confirmedData)
-              );
-
-              this.setState({ confirmedData });
+              this.props.setToast({ text: "Deleted table", type: "error" });
+              this.setState({ confirmedData: [] });
+              localStorage.removeItem("confirmedData");
             }}
           >
-            Submit
+            Delete table
           </Button>
-          </Container>
         </form>
-        <Table data={this.state.confirmedData} />
       </React.Fragment>
     );
   }
 }
-
-export default Form;
+export default withToasts(Form);
+// End?

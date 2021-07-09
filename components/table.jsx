@@ -4,6 +4,7 @@ import Text from "@geist-ui/react/esm/text";
 import User from "@geist-ui/react/esm/user";
 import Button from "@geist-ui/react/esm/button";
 import useToasts from "@geist-ui/react/esm/use-toasts";
+import Card from "@geist-ui/react/esm/card";
 
 const withToasts = (Component) => {
   return (props) => {
@@ -12,9 +13,11 @@ const withToasts = (Component) => {
   }
 }
 
+
+
 class Table extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   
   render() {
@@ -32,6 +35,9 @@ class Table extends Component {
         JavaScript engineer
         </User>
         <Button onClick={() => { this.props.setToast({ text: 'Hello' }) }}> </Button>          
+        <Card hoverable>
+          <p><Text h6>hello :3  More upcoming soon :D (this is just a test not a final product)</Text>.</p>
+        </Card>
       </div>
     );
   }

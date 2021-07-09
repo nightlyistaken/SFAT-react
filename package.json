@@ -6,8 +6,12 @@
   "dependencies": {
     "@geist-ui/react": "^2.1.5",
     "@geist-ui/react-icons": "^1.0.1",
+    "atomize": "^1.0.28",
+    "bootstrap": "^4.6.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^17.0.2",
+    "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

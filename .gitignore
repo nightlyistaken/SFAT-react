@@ -2,4 +2,5 @@
 node_modules/
 yarn.lock
 # build file
-main.js
+# main.js
+yarn-error.log

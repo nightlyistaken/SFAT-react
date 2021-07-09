@@ -5,7 +5,8 @@ import { GeistProvider, CssBaseline } from "@geist-ui/react";
 import Form from "./components/form";
 
 ReactDOM.render(
-  <GeistProvider themeType="dark">
+  <GeistProvider //themeType="dark"
+  >
     <CssBaseline />
     <Form />
   </GeistProvider>,

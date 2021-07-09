@@ -9,17 +9,15 @@ import Card from "@geist-ui/react/esm/card";
 const withToasts = (Component) => {
   return (props) => {
     const [_, setToast] = useToasts();
-    return <Component setToast={setToast} {...props} />
-  }
-}
-
-
+    return <Component setToast={setToast} {...props} />;
+  };
+};
 
 class Table extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     return (
       <div>
@@ -27,16 +25,33 @@ class Table extends Component {
           <UITable.Column prop="firstName"></UITable.Column>
           <UITable.Column prop="lastName"></UITable.Column>
         </UITable>
-        <Text h1>hello :3 this is test </Text>
-        <User src="#" name="breadA (dhairy-online)">
-        JavaScript engineer
+        
+        <User
+          src="https://avatars.githubusercontent.com/u/62501544?v=4"
+          name="breadA (dhairy-online)"
+        >
+          Owner, New-to-coding.
         </User>
-        <User src="#" name="Divy (littledivy)">
-        JavaScript engineer
+        <User
+          src="https://avatars.githubusercontent.com/u/34997667?v=4"
+          name="Divy (littledivy)"
+        >
+          Co-owner, React and back-end master
         </User>
-        <Button onClick={() => { this.props.setToast({ text: 'Hello' }) }}> </Button>          
+        <Button
+          onClick={() => {
+            this.props.setToast({ text: "Hello" });
+          }}
+        >
+          {" "}
+        </Button>
         <Card hoverable>
-          <p><Text h6>hello :3  More upcoming soon :D (this is just a test not a final product)</Text>.</p>
+          <p>
+            <Text h5>
+              hello :3 More upcoming soon :D (this is just a test not a final
+              product)
+            </Text>
+          </p>
         </Card>
       </div>
     );

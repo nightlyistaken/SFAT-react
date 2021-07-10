@@ -28,7 +28,7 @@ class Form extends Component {
           <Text h1>
             Name,Class Form in React
             <Tag size="large" type="lite">
-              V.1.2
+              V.1.3
             </Tag>
           </Text>
           <Text h5>SFAT - Simple and Easy form maker. </Text>
@@ -55,6 +55,21 @@ class Form extends Component {
               icon={<Save />}
               auto
               onClick={() => {
+                // filter if firstName and lastName already exists
+                const filtered = this.state.confirmedData.find(
+                  (item) =>
+                    item.firstName === this.state.firstName &&
+                    item.lastName === this.state.lastName
+                );
+                // if exists, show a toast
+                if (filtered) {
+                  this.props.setToast({
+                    text: "Name already exists",
+                    type: "error",
+                  });
+                  return;
+                }
+                // if not, add to confirmedData and save to localStorage
                 const confirmedData = [
                   ...this.state.confirmedData,
                   {
@@ -62,12 +77,12 @@ class Form extends Component {
                     lastName: this.state.lastName,
                   },
                 ];
-
+                // save to localStorage
                 localStorage.setItem(
                   "confirmedData",
                   JSON.stringify(confirmedData)
                 );
-
+                // set state to confirmedData
                 this.setState({ confirmedData });
               }}
             >
@@ -91,4 +106,3 @@ class Form extends Component {
   }
 }
 export default withToasts(Form);
-// End?

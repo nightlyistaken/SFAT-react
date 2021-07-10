@@ -34,8 +34,7 @@ class Table extends Component {
         <Card hoverable>
           <p>
             <Text h5>
-              hello :3 More upcoming soon :D (this is just a test not a final
-              product)
+              hello :3 More upcoming soon :D
             </Text>
           </p>
         </Card>
